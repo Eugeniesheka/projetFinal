@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Annonces;
 use App\Form\AnnoncesType;
+use App\Entity\Commentaires;
+use App\Form\CommentairesType;
+use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,10 +36,23 @@ class AnnoncesController extends AbstractController
      * Afficher les plus d' infos sur les annonces
      * @Route("/annonces/{id}", name="annonce.show", requirements={"id" = "\d+"})
     */
-    public function show(Annonces $annonce){
+    public function show(Annonces $annonce,Request $request,EntityManagerInterface $em){
+        $commentaire= new Commentaires();
+        $form =$this->createForm(CommentairesType::class,$commentaire);
+        $form->handleRequest($request);
+        if($form->isSubmitted()&& $form->isValid()){
+            
+            $commentaire->setAnnonce($annonce)
+                        ->setCreatAt(new\DateTime());
+            $em->persist($commentaire);
+           $em->flush();
+            return $this->redirectToRoute('annonce.show',['id'=>$annonce->getId()]);
 
+        }
+        $form = $this->createForm(CommentairesType::class, $commentaire);
         return $this->render('annonces/show.html.twig',[
             'annonce' => $annonce,
+            'commentairesForm' => $form->createView(), 
         ]);
     }
       /**

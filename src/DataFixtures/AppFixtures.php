@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
                         $manager->persist($article);
           //generation des commentaires
 
-             /*  for ($k=0; $k <=mt_rand(4,5); $k++) { 
+               for ($k=0; $k <=mt_rand(4,5); $k++) { 
                    $comment = new Commentaires();
                    $content ='<p>' .join($faker->paragraphs(5),'</p><p>' ). '</p>';
                    $now=new \DateTime();
@@ -51,11 +51,12 @@ class AppFixtures extends Fixture
                    $comment ->setAuteur($faker->name)
                             ->setContenus($content)
                             ->setCreatAt($faker->dateTimeBetween($min))
-                            ->setUpdateAt($faker->dateTimeBetween('-100 days'));
-                            //->setAnnonce($article);
+                            ->setUpdateAt($faker->dateTimeBetween('-100 days'))
+                            ->setAnnonce($article);
                             $manager->persist($comment);
                 }
-               */  
+             
+
             }
            
         }
