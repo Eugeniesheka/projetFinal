@@ -6,6 +6,9 @@ use App\Repository\CommentairesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\Entity()
+ * @ORM\Table(name="Commentaires")
+ * @ORM\HasLifecycleCallbacks() 
  * @ORM\Entity(repositoryClass=CommentairesRepository::class)
  */
 class Commentaires
@@ -37,6 +40,27 @@ class Commentaires
      */
     private $contenus;
 
+    /**
+     * @var Annonces
+     * @ORM\ManyToOne(targetEntity=Annonces::class, inversedBy="commentaires")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $annonce;
+    /**
+     * @ORM\PrePersist()
+     */
+    public function prePersist()
+    {
+        $this->createAt = new \DateTime();
+        $this->updateAt = new \DateTime();
+    }
+     /**
+     * @ORM\PreUpdate()
+     */
+    public function preUpdate()
+    {
+        $this->updateAt= new \DateTime();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +110,18 @@ class Commentaires
     public function setContenus(string $contenus): self
     {
         $this->contenus = $contenus;
+
+        return $this;
+    }
+
+    public function getAnnonce(): ?Annonces
+    {
+        return $this->annonce;
+    }
+
+    public function setAnnonce(?Annonces $annonce): self
+    {
+        $this->annonce = $annonce;
 
         return $this;
     }

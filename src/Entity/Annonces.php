@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AnnoncesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +54,22 @@ class Annonces
      */
     private $crypto;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="annonce")
+     */
+    private $commentaires;
+   
+    public function __construct()
+    {
+        $this->commentaires = new ArrayCollection();
+    }
+       /**
+    * @ORM\PrePersist()
+    */
+    public function prePersist()
+    {
+    $this->createAt = new \DateTime();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -125,6 +143,36 @@ class Annonces
     public function setCrypto(?Cryptomonaie $crypto): self
     {
         $this->crypto = $crypto;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaires>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaires $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setAnnonce($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaires $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getAnnonce() === $this) {
+                $commentaire->setAnnonce(null);
+            }
+        }
 
         return $this;
     }

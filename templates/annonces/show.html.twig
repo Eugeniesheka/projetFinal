@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <annonce>
+        <div class="content">
+            <h2> {{annonce.titre}}</h2>
+             {{annonce.contenu|raw}}
+        </div>
+    </annonce>
+    <modifier annonces>
+         <a href="{{ path('annonce.edit', {id: annonce.id}) }}" class="btn btn-primary">Modifier </a>
+    </modifier annonces>
+{% endblock %}
