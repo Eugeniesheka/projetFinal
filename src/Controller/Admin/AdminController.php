@@ -16,9 +16,14 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 class AdminController extends AbstractDashboardController
 {
     /**
+<<<<<<< HEAD
        * @Route("/admin", name="admin")
 
        */
+=======
+     * @Route("/admin", name="admin")
+     */
+>>>>>>> 37d6d9587651de9a237f37ef5c5edf4623096913
     public function index(): Response
     {
         return parent::index();

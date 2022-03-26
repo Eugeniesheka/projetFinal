@@ -3,14 +3,24 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<<<<<<< HEAD
     <h1>{{'inscription'|trans}}</h1>
+=======
+    <h1>Register</h1>
+>>>>>>> 37d6d9587651de9a237f37ef5c5edf4623096913
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
+<<<<<<< HEAD
 
         <button type="submit" class="btn">{{'inscrire'|trans}}</button>
+=======
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+>>>>>>> 37d6d9587651de9a237f37ef5c5edf4623096913
     {{ form_end(registrationForm) }}
 {% endblock %}

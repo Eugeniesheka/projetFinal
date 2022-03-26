@@ -17,8 +17,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     /**
+<<<<<<< HEAD
     * @Route("/register", name="app_register")
     */
+=======
+     * @Route("/register", name="app_register")
+     */
+>>>>>>> 37d6d9587651de9a237f37ef5c5edf4623096913
     public function register(Request $request, UserPasswordEncoderInterface $userPasswordEncoder, GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
