@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+
+   
+
+<section class ="annoncess">
+    {% for annonce in annonces %}
+       <annonce>
+            <h2> {{annonce.titre}}</h2>
+            <div calss ="metadata"> Ecrit le {{annonce.createAt|date('d/m/y')}} à {{annonce.createAt|date('H:i')}} dans la catégorie {{annonce.secteur.nom}}</div>
+            <div class ="content">
+            <img class="fit-picture"
+            src="http://via.placeholder.com/640x360"
+            </div>
+             <a href="{{ path('annonce.show', {id: annonce.id}) }}"  class="btn btn-primary">{{'Lire la suite'|trans}}</a>
+        </annonce>
+    {% endfor %}
+
+    
+    
+    
+     <div class="navigation">
+         {{knp_pagination_render(annonces)}}
+    </div>
+</section>
+
+{% endblock %}
