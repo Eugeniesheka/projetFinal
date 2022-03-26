@@ -48,7 +48,7 @@ class AnnoncesController extends AbstractController
             
             $commentaire->setAnnonce($annonce)
                         ->setCreatAt(new\DateTime())
-                        ;
+                        ->setAuteur($this->getUser());
             $em->persist($commentaire);
            $em->flush();
             return $this->redirectToRoute('annonce.show',['id'=>$annonce->getId()]);
@@ -74,7 +74,7 @@ class AnnoncesController extends AbstractController
         $form = $this->createForm(AnnoncesType::class, $annonce);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($article);
+            $em->persist($annonce);
             $em->flush();
             return $this->redirectToRoute('annonces.list');
         }

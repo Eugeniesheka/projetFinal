@@ -26,7 +26,6 @@
             {% endfor %}
             {%if app.user%}
             {{form_start(commentairesForm)}}
-            {{form_row(commentairesForm.auteur,{'attr':{'placeholder':"Votre nom"}})}}
             {{form_row(commentairesForm.contenus,{'attr':{'placeholder':"Votre commentaire"}})}}
             <button type="submit" class "btn btn-succes">Commenter</button>
             {{form_end(commentairesForm)}}

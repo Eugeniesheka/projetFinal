@@ -21,7 +21,10 @@ class Commentaires
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $auteur;
 
@@ -66,12 +69,12 @@ class Commentaires
         return $this->id;
     }
 
-    public function getAuteur(): ?string
+    public function getAuteur(): ?User
     {
         return $this->auteur;
     }
 
-    public function setAuteur(string $auteur): self
+    public function setAuteur(User$auteur): self
     {
         $this->auteur = $auteur;
 
@@ -125,4 +128,5 @@ class Commentaires
 
         return $this;
     }
+    
 }
