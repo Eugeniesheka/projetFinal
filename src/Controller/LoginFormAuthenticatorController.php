@@ -11,11 +11,8 @@ class LoginFormAuthenticatorController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
-<<<<<<< HEAD
     */
-=======
-     */
->>>>>>> 37d6d9587651de9a237f37ef5c5edf4623096913
+
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         // if ($this->getUser()) {

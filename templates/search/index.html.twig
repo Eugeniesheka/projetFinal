@@ -1,11 +1,24 @@
 {% extends 'base.html.twig' %}
+
+
 {% block body %}
+    <div class="container">
+        <div class="section">
+          <div class="row" >
+          <div class="col m6 offset-m3">
+          <h1>Recherche avancée</h1>
+     {{ form(search_form) }}
+     </div>
+        </div>
+      
+           <div class="row" >
+          <div class="col m6 offset-m3">
+          
+         
+    <h1>Résultat de la recherche</h1>
 
-   
-
-<section class ="annonces">
-    {% for annonce in annonces %}
-       <annonce>
+   {% for annonce in annonces %}
+       <div>
             <h2> {{annonce.titre}}</h2>
             <div calss ="metadata"> Ecrit le {{annonce.createAt|date('d/m/y')}} à {{annonce.createAt|date('H:i')}} dans la catégorie {{annonce.secteur.nom}}</div>
             <div class ="content">
@@ -13,15 +26,11 @@
             src="http://via.placeholder.com/640x360"
             </div>
              <a href="{{ path('annonce.show', {id: annonce.id}) }}"  class="btn btn-primary">{{'Lire la suite'|trans}}</a>
-        </annonce>
+        </div>
     {% endfor %}
-
-    
-          
-    
-     <div class="navigation">
-         {{knp_pagination_render(annonces)}}
-    </div>
-</section>
-
+</div>
+</div>
+</div>
+</div>
 {% endblock %}
+         

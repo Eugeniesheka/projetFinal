@@ -1,41 +1,36 @@
-<?php
+<?php 
+namespace App\Entity; 
 
-namespace App\Entity;
 
-use App\Repository\PropertySearchRepository;
-use Doctrine\ORM\Mapping as ORM;
+class PropertySearch{
 
-/**
- * @ORM\Entity(repositoryClass=PropertySearchRepository::class)
- */
-class PropertySearch
-{
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    
+    private $secteur; 
+    private $crypto ; 
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $nom;
-
-    public function getId(): ?int
+    public function setsecteur(  string $secteur ) 
     {
-        return $this->id;
+        $this->secteur = $secteur ;
+        return $this; 
     }
 
-    public function getNom(): ?string
+    public function getsecteur( )  
     {
-        return $this->nom;
+        return $this->secteur ;
     }
 
-    public function setNom(string $nom): self
-    {
-        $this->nom = $nom;
 
-        return $this;
+
+
+
+    public function setcrytpo(  string $crypto ) 
+    {
+        $this->crypto = $crypto ;
+        return $this; 
+    }
+    
+    public function getcrypto( )  
+    {
+        return $this->crypto ;
     }
 }

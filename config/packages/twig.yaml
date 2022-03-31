@@ -3,8 +3,5 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
-<<<<<<< HEAD
     globals:
       locales: '%app.locales%'
-=======
->>>>>>> 37d6d9587651de9a237f37ef5c5edf4623096

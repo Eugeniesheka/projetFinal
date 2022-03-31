@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Annonces;
+use App\Controller\SearchController;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -44,6 +45,22 @@ class AnnoncesRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
+  
+ /**
+     * @throws ORMException
+     * @throws OptimisticLockException
+     */
+  public function searchAnnonces ($criteria )
+    {
+       return $this ->createQueryBuilder('a')
+        ->leftJoin('a.secteur' ,'secteur')
+        ->where('secteur.nom =:secteurName')
+        ->setParameter("secteurName",$criteria['secteur']->getNom())
+      ->getQuery()
+       ->getResult()
+       ; 
+       
+    }
 
     // /**
     //  * @return Annonces[] Returns an array of Annonces objects
@@ -73,4 +90,6 @@ class AnnoncesRepository extends ServiceEntityRepository
         ;
     }
     */
+
+  
 }
