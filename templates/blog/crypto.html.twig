@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ 
+ 
+ 
+
+<table class="table table-hover">
+  <thead>
+ 
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+     
+    </tr>
+   
+  </thead>
+  <tbody>
+    {% for crypto in crypto %}
+    <tr class="table-active">
+      <td>{{ crypto.nom }}</td>
+      <td>{{ crypto.prix }}</td>
+    </tr>
+     {% endfor %}
+  </tbody>
+  </table>
+
+
+       <div class="navigation">
+         {{knp_pagination_render(crypto)}}
+    </div>
+  
+{% endblock %}

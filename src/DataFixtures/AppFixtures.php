@@ -51,11 +51,12 @@ class AppFixtures extends Fixture
                    $comment ->setAuteur($faker->name)
                             ->setContenus($content)
                             ->setCreatAt($faker->dateTimeBetween($min))
-                            ->setUpdateAt($faker->dateTimeBetween('-100 days'));
-                            //->setAnnonce($article);
+                            ->setUpdateAt($faker->dateTimeBetween('-100 days'))
+                            ->setAnnonce($article);
                             $manager->persist($comment);
                 }
-               */  
+             */
+
             }
            
         }

@@ -9,4 +9,30 @@
     <modifier annonces>
          <a href="{{ path('annonce.edit', {id: annonce.id}) }}" class="btn btn-primary">Modifier </a>
     </modifier annonces>
+    <section id="commentaires"
+
+    <h2>{{annonce.commentaires|length }}commentaires : </h2>
+            {% for comment in annonce.commentaires%}
+                <div class="commentaires">
+                    <div class ="row">
+                            <div class="col-3">
+                                {{comment.auteur}} (<small>{{comment.creatAt|date('d/m/y')}}</small>)
+                            </div>
+                        <div class="col">
+                            {{comment.contenus|raw}}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {%if app.user%}
+            {{form_start(commentairesForm)}}
+            {{form_row(commentairesForm.contenus,{'attr':{'placeholder':"Votre commentaire"}})}}
+            <button type="submit" class "btn btn-succes">Commenter</button>
+            {{form_end(commentairesForm)}}
+            {% else %}
+            <h2>connectez vous pour commenter </h2>
+            <a href ="{{path('app_register')}}" class="btn btn-primary">connexion</a>
+            {% endif %}
+        </section> 
+       
 {% endblock %}
