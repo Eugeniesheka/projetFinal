@@ -6,7 +6,7 @@
         <div class="section">
           <div class="row" >
           <div class="col m6 offset-m3">
-          <h1>Recherche avancée</h1>
+          <h1>{{"Recherche avancée"|trans }} </h1>
      {{ form(search_form) }}
      </div>
         </div>
@@ -15,12 +15,12 @@
           <div class="col m6 offset-m3">
           
          
-    <h1>Résultat de la recherche</h1>
+    <h1>{{"Résultat de la recherche"|trans}}</h1>
 
    {% for annonce in annonces %}
        <div>
             <h2> {{annonce.titre}}</h2>
-            <div calss ="metadata"> Ecrit le {{annonce.createAt|date('d/m/y')}} à {{annonce.createAt|date('H:i')}} dans la catégorie {{annonce.secteur.nom}}</div>
+            <div calss ="metadata"> {{'Ecrit le'|trans}}  {{annonce.createAt|date('d/m/y')}}{{'à'|trans}} {{annonce.createAt|date('H:i')}} {{'dans la catégorie'|trans}}  {{annonce.secteur.nom}}</div>
             <div class ="content">
             <img class="fit-picture"
             src="http://via.placeholder.com/640x360"

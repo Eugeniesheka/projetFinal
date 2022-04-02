@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BlogController!{% endblock %}
+{% block title %}{{'Bienvenue au monde des métaverse!'|trans}}{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,21 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>{{'Bienvenue au monde des métaverse!'|trans}} </h1>
+ <body>
+    <iframe src="video/vidéo.mp4" width="700" height="500" frameborder="0" allowfullscreen></iframe>
+    </video>
+     <p></p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/sheka/Documents/projetDev/metaUnivers/src/Controller/BlogController.php'|file_link(0) }}">src/Controller/BlogController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/sheka/Documents/projetDev/metaUnivers/templates/blog/index.html.twig'|file_link(0) }}">templates/blog/index.html.twig</a></code></li>
-    </ul>
+    <p>
+    {{'Pour les cryptomonnaies, 2021 aura été l année de tous les records. Avec un volume d échanges de plus de 14 000 milliards de dollars contre 1800 milliards en 2020, mais aussi 30 milliards investis par les fonds de capital-risque du monde entier (quatre fois plus qu’en 2018), les actifs numériques sortent renforcés. L année dernière a notamment été marquée par la folie des NFT et l’engouement de géants américains et asiatiques pour le metaverse, présenté comme le “futur de l’Internet”.
+
+En 2022, le bitcoin pourrait également surpasser le S&P 500, selon un rapport d’Arcane Research qui remarque que cette crypto a enregistré une hausse de 73 % en 2021, contre 28 % pour le S&P 500. Une suite logique pour le marché des cryptomonnaies qui a brièvement dépassé les 3000 milliards de dollars de valorisation l’an passé.
+
+Mais au-delà de l’augmentation de la valeur des cryptomonnaies, quel sera l’impact du metaverse et du Web3 sur le secteur ? Que vont changer les monnaies numériques nationales ? Quel avenir pour la cryptomonnaie de Facebook ? Autant de questions que nous avons posées à Grégory Raymond, journaliste chez Capital spécialisé dans les cryptoactifs et la blockchain, créateur de la newsletter 21 Millions qui suit l’actualité des cryptomonnaies.'|trans}}
+     
+    </p>
+  </body>
+  
 </div>
 {% endblock %}

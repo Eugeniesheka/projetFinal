@@ -7,12 +7,15 @@
     {% for annonce in annonces %}
        <annonce>
             <h2> {{annonce.titre}}</h2>
-            <div calss ="metadata"> Ecrit le {{annonce.createAt|date('d/m/y')}} à {{annonce.createAt|date('H:i')}} dans la catégorie {{annonce.secteur.nom}}</div>
+            <div calss ="metadata"> {{'Ecrit le'|trans}}  {{annonce.createAt|date('d/m/y')}}{{'à'|trans}} {{annonce.createAt|date('H:i')}} {{'dans la catégorie'|trans}}  {{annonce.secteur.nom}}</div>
             <div class ="content">
             <img class="fit-picture"
             src="http://via.placeholder.com/640x360"
             </div>
              <a href="{{ path('annonce.show', {id: annonce.id}) }}"  class="btn btn-primary">{{'Lire la suite'|trans}}</a>
+             {%if app.user == annonce.Auteur %}
+              <a href="{{ path('annonce.delete', {id: annonce.id}) }}"  class="btn btn-primary">{{'suprimer'|trans}}</a>
+            {% endif %}
         </annonce>
     {% endfor %}
 

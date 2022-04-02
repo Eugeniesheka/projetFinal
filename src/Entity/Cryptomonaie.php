@@ -30,7 +30,7 @@ class Cryptomonaie
     private $prix;
 
     /**
-     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="crypto")
+     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="crypto",cascade={"persist"}, orphanRemoval=true)
      */
     private $annonces;
 

@@ -5,3 +5,4 @@ twig:
     exception_controller: null
     globals:
       locales: '%app.locales%'
+   

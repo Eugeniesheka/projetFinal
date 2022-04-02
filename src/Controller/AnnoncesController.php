@@ -35,7 +35,7 @@ class AnnoncesController extends AbstractController
         $donnes= $this->getDoctrine()->getRepository(Annonces::class)->findAll();
         $annonces =$paginator->paginate(
             $donnes,
-            $request->query->getInt('page',1),//numero page en cours 5
+            $request->query->getInt('page',1),5 //numero page en cours 5
         );
         return $this->render('annonces/list.html.twig', [
             'controller_name' => 'AnnoncesController',
@@ -83,6 +83,7 @@ class AnnoncesController extends AbstractController
         $form = $this->createForm(AnnoncesType::class, $annonce);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $annonce->setAuteur($this->getUser());
             $em->persist($annonce);
             $em->flush();
             return $this->redirectToRoute('annonces.list');
@@ -109,8 +110,30 @@ class AnnoncesController extends AbstractController
         'form' => $form->createView(),
         ]);
     }
-
-  
+        /**
+     * Suprimer annonce 
+     * @Route("annonces/{id}/delete", name="annonce.delete")
+     * @param Request $request
+     * @param Annonces $annonce 
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function delete(Request $request,Annonces $annonce ,EntityManagerInterface $em){
+        $form = $this->createFormBuilder()
+        ->setAction($this->generateUrl('annonce.delete', ['id' => $annonce->getId()]))
+        ->getForm();
+        $form->handleRequest($request);
+        if ( ! $form->isSubmitted() || ! $form->isValid()) {
+            return $this->render('annonces/delete.html.twig', [
+            'annonce' => $annonce,
+            'form' => $form->createView(),
+            ]);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($annonce);
+        $em->flush();
+        return $this->redirectToRoute('annonces.list');
+    }
 
     
 

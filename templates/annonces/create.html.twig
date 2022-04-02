@@ -2,8 +2,8 @@
 
 {% block body %}
 
-    <h1>{{'Ajouter une annonce'|trans}}/h1>
-    <h1>Ajout d'une annonce</h1>
+  
+    <h1>{{'Ajouter une annonce'|trans}}</h1>
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
@@ -11,8 +11,7 @@
     <div class="form-group">
     
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success">{{'Enregistrer'|trans}}</button>
-            <button type="submit" class="btn btn-success">Enregistrer</button>
+            <button type="submit" class="btn btn-primary">{{'Enregistrer'|trans}}</button>
         </div>
     </div>
     {{ form_end(form) }}

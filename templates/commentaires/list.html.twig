@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+   
+
+<section class ="annoncess">
+
+    {% for commentaire in commentaires %}
+       <commentaire>
+
+            <div calss ="metadata"> {{'Ecrit le'|trans}} {{commentaire.creatAt|date('d/m/y')}} {{'Ã'|trans}} Ã  {{commentaire.creatAt|date('H:i')}}</div>
+            <div calss ="metadata"> {{'Commentaire :  '|trans}}  {{commentaire.contenus|raw}}</div>
+            <h4>{{'Annonce '|trans}}</h4>
+            <h5>Secteur: {{commentaire.annonce.secteur}} </h5>
+            <h5>Cryptomonnaie: {{commentaire.annonce.secteur}} </h5>
+            <div calss ="metadata">Contenu :  {{commentaire.annonce.contenu|raw}}</div>
+            <div class ="content">
+
+        </commentaire>
+    {% endfor %}
+    
+    
+</section>
+
+{% endblock %}

@@ -28,25 +28,37 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
               <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                  <a class="nav-link active" href="/">{{'Bienvenue'|trans}}
+                  <a class="nav-link active" href="{{path('annonces.list')}}">{{'Annonces'|trans}}
 
                     <span class="visually-hidden"></span>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" href="/search">{{'Recherche avancé'|trans}} </a>
+                  <a class="nav-link active" href="{{path('app_search')}}">{{'Recherche avancée'|trans}} </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">{{'Publier un article'|trans}}</a>
+                  <a class="nav-link" href="{{path('annonces.create')}}">{{'Publier un article'|trans}}</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">{{'Connexion'|trans}}</a>
+                 {% if app.user %}
+                 
+                  <a class="nav-link" href="{{path('app_logout')}}">{{'DéConnexion'|trans}}</a>
+                {% else %}
+                <a class="nav-link" href="{{path('app_login')}}">{{'Connexion'|trans}}</a>
+                {% endif %}
                 </li>
+                {% if app.user is null %}
+                 <li class="nav-item">
+                  <a class="nav-link" href="{{path('app_register')}}">{{'Inscription'|trans}}</a>
+                {% else %}
+                <a class="nav-link" href="{{path('commentaire.list')}}">{{'Mes commentaires'|trans}}</a>
+                 </li>
+                 {% endif %}
                 <li class="nav-item">
-                  <a class="nav-link" href="#">{{'Liste des cryptos'|trans}}</a>
+                  <a class="nav-link" href="{{path('crypto.list')}}">{{'Liste des cryptos'|trans}}</a>
                 </li>
                  <li class="nav-item">
-                  <a class="nav-link" href="#">{{'Sur Nous'|trans}}</a>
+                  <a class="nav-link" href="{{path('admin')}}">{{'Administration'|trans}}</a>
                  </div>
                </li>
  

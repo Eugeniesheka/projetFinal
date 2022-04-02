@@ -49,15 +49,20 @@ class Annonces
     private $secteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Cryptomonaie::class, inversedBy="annonces")
+     * @ORM\ManyToOne(targetEntity=Cryptomonaie::class, inversedBy="annonces",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $crypto;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="annonce",cascade={"persist"}, orphanRemoval=true)
      */
     private $commentaires;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     */
+    private $auteur;
    
     public function __construct()
     {
@@ -173,6 +178,18 @@ class Annonces
                 $commentaire->setAnnonce(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuteur(): ?User
+    {
+        return $this->auteur;
+    }
+
+    public function setAuteur(?User $auteur): self
+    {
+        $this->auteur = $auteur;
 
         return $this;
     }

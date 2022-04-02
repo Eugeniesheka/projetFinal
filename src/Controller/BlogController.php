@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cryptomonaie;
+use App\Repository\CommentairesRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class BlogController extends AbstractController
 {
     /**
-    * @Route("/", name="home")
+     * @Route("/", name="home")
      */
     public function home(): Response
     {
@@ -37,4 +38,21 @@ class BlogController extends AbstractController
         ] 
      );
     }
+        /**
+         * Lister uniquement les commentaires de l utilisateur !
+         * @Route("/commentaires", name="commentaire.list")
+         * @return Response
+         */
+        public function listCommentaires(CommentairesRepository $em) : Response
+        { 
+
+        $commentaires =$em->getSesCommentaires($this->getUser());
+
+        return $this->render('commentaires/list.html.twig', [
+        'commentaires' => $commentaires,
+        ]);
+        
+        }
+
+
 }

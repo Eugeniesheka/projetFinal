@@ -23,7 +23,7 @@ class Commentaires
     /**
      * @var User
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $auteur;

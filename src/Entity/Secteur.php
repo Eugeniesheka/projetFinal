@@ -30,7 +30,7 @@ class Secteur
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="secteur")
+     * @ORM\OneToMany(targetEntity=Annonces::class, mappedBy="secteur",cascade={"persist"}, orphanRemoval=true)
      */
     private $annonces;
 

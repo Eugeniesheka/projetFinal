@@ -6,12 +6,15 @@
              {{annonce.contenu|raw}}
         </div>
     </annonce>
+     {%if app.user==annonce.auteur %}
     <modifier annonces>
-         <a href="{{ path('annonce.edit', {id: annonce.id}) }}" class="btn btn-primary">Modifier </a>
+         <a href="{{ path('annonce.edit', {id: annonce.id}) }}" class="btn btn-primary"> {{'Modifier'|trans}} </a>
+  
     </modifier annonces>
+    {% endif %}
     <section id="commentaires"
 
-    <h2>{{annonce.commentaires|length }}commentaires : </h2>
+    <h2>{{annonce.commentaires|length }}{{'commentaires '|trans}} </h2>
             {% for comment in annonce.commentaires%}
                 <div class="commentaires">
                     <div class ="row">
@@ -27,11 +30,11 @@
             {%if app.user%}
             {{form_start(commentairesForm)}}
             {{form_row(commentairesForm.contenus,{'attr':{'placeholder':"Votre commentaire"}})}}
-            <button type="submit" class "btn btn-succes">Commenter</button>
+            <button type="submit" class "btn btn-succes">{{'Commenter'|trans}}</button>
             {{form_end(commentairesForm)}}
             {% else %}
-            <h2>connectez vous pour commenter </h2>
-            <a href ="{{path('app_register')}}" class="btn btn-primary">connexion</a>
+            <h2>{{'connectez vous pour commenter'|trans}} </h2>
+            <a href ="{{path('app_register')}}" class="btn btn-primary">{{'connexion'|trans}}</a>
             {% endif %}
         </section> 
        
